@@ -22,5 +22,16 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+
+    //support lib
+    compile rootProject.ext.supportLibAppCompat
+    compile rootProject.ext.supportLibDesign
+
+    compile rootProject.ext.archExtension
+
+    compile rootProject.ext.okhttp
+    compile rootProject.ext.retrofit
+    compile rootProject.ext.gsonConverter
+    //ui
+    compile rootProject.ext.picasso
 }

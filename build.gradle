@@ -2,6 +2,7 @@
 
 buildscript {
     repositories {
+        maven { url 'https://maven.google.com' }
         jcenter()
     }
     dependencies {
@@ -15,9 +16,27 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url 'https://maven.google.com' }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext {
+    supportLibVersion = '26.1.0'
+    archVersion = '1.0.0'
+    retrofitVersion = '2.1.0'
+    gsonConverterVersion = '2.1.0'
+    okhttpVersion = '3.8.0'
+    picassoVersion = '2.5.2'
+
+
+    supportLibAppCompat = "com.android.support:appcompat-v7:$supportLibVersion"
+    supportLibDesign = "com.android.support:design:$supportLibVersion"
+    archExtension = "android.arch.lifecycle:extensions:$archVersion"
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    gsonConverter = "com.squareup.retrofit2:converter-gson:$gsonConverterVersion"
+    okhttp = "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    picasso = "com.squareup.picasso:picasso:$picassoVersion"
 }
