@@ -17,11 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+    testCompile rootProject.ext.junit
+    testCompile rootProject.ext.mockito
 
     //support lib
     compile rootProject.ext.supportLibAppCompat
@@ -34,5 +38,5 @@ dependencies {
     compile rootProject.ext.gsonConverter
     compile rootProject.ext.httpLogger
     //ui
-    compile rootProject.ext.picasso
+    compile rootProject.ext.glide
 }
