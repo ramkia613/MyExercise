@@ -1,8 +1,8 @@
 package com.ramki.myexercise.data.repository;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
+import com.ramki.myexercise.BuildConfig;
 import com.ramki.myexercise.data.model.Fact;
 
 import java.net.HttpURLConnection;
@@ -25,9 +25,12 @@ public class ApplicationRepository {
     private static ApplicationRepository repository;
 
     private ApplicationRepository() {
-
+        // Service log will be add for debug mode
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        if (BuildConfig.DEBUG)
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        else
+            interceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
 
         OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
@@ -62,7 +65,7 @@ public class ApplicationRepository {
                     factMutableLiveData.postValue(com.ramki.myexercise.data.model.Response.success(fact));
                 } else {
                     if (response.code() == HttpURLConnection.HTTP_UNAUTHORIZED) {
-                        factMutableLiveData.postValue(com.ramki.myexercise.data.model.Response.unAuthorised(null));
+                        factMutableLiveData.postValue(com.ramki.myexercise.data.model.Response.error(null, new Throwable("Un authorized, please contact support team")));
                     } else {
                         String errorMessage = "Oops something went wrong!";
                         factMutableLiveData.postValue(com.ramki.myexercise.data.model.Response.error(null, new Throwable(errorMessage)));
@@ -73,7 +76,7 @@ public class ApplicationRepository {
 
             @Override
             public void onFailure(Call<Fact> call, Throwable t) {
-                factMutableLiveData.postValue(com.ramki.myexercise.data.model.Response.error(null, t));
+                factMutableLiveData.postValue(com.ramki.myexercise.data.model.Response.error(null, new Throwable("Please check your internet connection!")));
             }
         });
         return factMutableLiveData;

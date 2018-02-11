@@ -31,11 +31,6 @@ public class Response<T> {
     }
 
     @Nullable
-    public static <T> Response<T> noNetwork(@Nullable T data, Throwable error) {
-        return new Response<>(NO_NETWORK, data, error);
-    }
-
-    @Nullable
     public static <T> Response<T> success(@Nullable T data) {
         return new Response<>(SUCCESS, data, null);
     }
@@ -45,18 +40,4 @@ public class Response<T> {
         return new Response<>(FAILURE, data, error);
     }
 
-   /* @Nullable
-    public static <T> Response<T> badRequest(@Nullable T data, Throwable error) {
-        return new Response<>(BAD_REQUEST, data, error);
-    }*/
-
-    @Nullable
-    public static <T> Response<T> unAuthorised(@Nullable T data) {
-        return new Response<>(UNAUTHORISED, data, null);
-    }
-
-    /*@Nullable
-    public static <T> Response<T> loading(@Nullable T data) {
-        return new Response<>(LOADING, data, null);
-    }*/
 }

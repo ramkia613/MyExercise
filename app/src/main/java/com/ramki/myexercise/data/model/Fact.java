@@ -13,6 +13,11 @@ public class Fact {
     @SerializedName("rows")
     private ArrayList<Information> informations;
 
+    public Fact(String title, ArrayList<Information> informations) {
+        this.title = title;
+        this.informations = informations;
+    }
+
     public String getTitle() {
         return title;
     }

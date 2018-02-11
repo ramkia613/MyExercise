@@ -13,6 +13,12 @@ public class Information {
     @SerializedName("imageHref")
     private String imageUrl;
 
+    public Information(String title, String description, String imageUrl) {
+        this.title = title;
+        this.description = description;
+        this.imageUrl = imageUrl;
+    }
+
     public String getTitle() {
         return title;
     }
