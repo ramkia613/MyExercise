@@ -29,8 +29,8 @@ ext {
     retrofitVersion = '2.1.0'
     gsonConverterVersion = '2.1.0'
     okhttpVersion = '3.8.0'
+    httpLoggerVersion = '3.9.1'
     picassoVersion = '2.5.2'
-
 
     supportLibAppCompat = "com.android.support:appcompat-v7:$supportLibVersion"
     supportLibDesign = "com.android.support:design:$supportLibVersion"
@@ -38,5 +38,6 @@ ext {
     retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
     gsonConverter = "com.squareup.retrofit2:converter-gson:$gsonConverterVersion"
     okhttp = "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    httpLogger = "com.squareup.okhttp3:logging-interceptor:$httpLoggerVersion"
     picasso = "com.squareup.picasso:picasso:$picassoVersion"
 }

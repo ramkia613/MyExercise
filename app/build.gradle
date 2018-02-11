@@ -32,6 +32,7 @@ dependencies {
     compile rootProject.ext.okhttp
     compile rootProject.ext.retrofit
     compile rootProject.ext.gsonConverter
+    compile rootProject.ext.httpLogger
     //ui
     compile rootProject.ext.picasso
 }
